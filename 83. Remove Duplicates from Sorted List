@@ -1,0 +1,35 @@
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null) return head;
+
+        ArrayList <Integer> stk= new ArrayList<>();
+        ListNode point = head;
+
+        while(point != null){
+            if ( !stk.isEmpty() && stk.get(stk.size()-1)==point.val){
+             point = point.next;
+            continue;
+            }
+            stk.add(point.val);
+            point = point.next;
+        }
+    
+
+    ListNode root= new ListNode();
+     point = root;
+    for (int i=0;i<stk.size()-1;i++){
+        point.val= stk.get(i);
+         
+        point.next= new ListNode();
+        point=point.next;
+
+    }
+    point.val=stk.get(stk.size()-1);
+
+
+    
+    
+    return root;
+        
+    }
+}
